@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f3d2e">
+<title>NestSkill Bill Download</title>
+<style>
+html,body{margin:0;padding:0;background:#f3f4f6;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{padding:env(safe-area-inset-top,0px) 12px env(safe-area-inset-bottom,0px)}
+.ns-app-brand{max-width:960px;margin:16px auto 0;text-align:center;font-weight:800;font-size:1.1rem;color:#0f3d2e}
+@media (prefers-color-scheme:dark){html,body{background:#0b1220}.ns-app-brand{color:#fbbf24}}
+</style>
+</head>
+<body>
+<div class="ns-app-brand">NestSkill Smart Solutions</div>
+<div class="ns-bill" id="ns-bill">
+<div class="ns-bill__grid">
+<div class="ns-bill__main">
+<h3 class="ns-bill__title">Download Your Electricity Bill</h3>
+<p class="ns-bill__sub">Select your DISCOM, enter your consumer number, and your bill opens in a new tab.</p>
+<label class="ns-bill__label" for="ns-discom">DISCOM</label>
+<select class="ns-bill__field" id="ns-discom">
+<option value="">Select DISCOM</option>
+<option value="uhbvn">UHBVN (Uttar Haryana)</option>
+<option value="dhbvn">DHBVN (Dakshin Haryana)</option>
+</select>
+<label class="ns-bill__label" for="ns-consumer">Consumer / Account Number</label>
+<input class="ns-bill__field" id="ns-consumer" type="text" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="e.g. 0263891000">
+<div class="ns-bill__error" id="ns-bill-error" role="alert" aria-live="polite"></div>
+<button class="ns-bill__btn" type="button" onclick="nsBillGo()">View / Download Bill</button>
+</div>
+<div class="ns-bill__side">
+<h4 class="ns-bill__heading">Favourite Links</h4>
+<div class="ns-bill__group">DHBVN (Dakshin Haryana)</div>
+<div class="ns-bill__links">
+<a class="ns-bill__link" href="https://esolarconn.dhbvn.org.in/" target="_blank" rel="noopener noreferrer">Solar Website</a>
+<a class="ns-bill__link" href="https://esolarconn.dhbvn.org.in/dhtendor/Loginvendor.aspx" target="_blank" rel="noopener noreferrer">Vendor Login</a>
+<a class="ns-bill__link" href="https://esolarconn.dhbvn.org.in/Login/Login.aspx" target="_blank" rel="noopener noreferrer">Consumer Login</a>
+</div>
+<div class="ns-bill__group">UHBVN (Uttar Haryana)</div>
+<div class="ns-bill__links">
+<a class="ns-bill__link" href="https://solarconnection.uhbvn.org.in/" target="_blank" rel="noopener noreferrer">Solar Website</a>
+<a class="ns-bill__link" href="https://solarconnection.uhbvn.org.in/Login/login.aspx" target="_blank" rel="noopener noreferrer">Vendor / Consumer Login</a>
+</div>
+<div class="ns-bill__group">PM Surya Ghar</div>
+<div class="ns-bill__links">
+<a class="ns-bill__link" href="https://vendor.pmsuryaghar.gov.in/" target="_blank" rel="noopener noreferrer">Vendor Login</a>
+<a class="ns-bill__link" href="https://consumer.pmsuryaghar.gov.in/consumer/" target="_blank" rel="noopener noreferrer">Consumer Login</a>
+</div>
+</div>
+</div>
+<p class="ns-bill__note">All links open the official portals in a new tab. NestSkill does not store your number.</p>
+</div>
+<style>
+.ns-bill{max-width:960px;margin:24px auto;padding:24px;border:1px solid rgba(0,0,0,.12);border-radius:14px;background:#fff;color:#1f2937;font-family:inherit;box-shadow:0 4px 18px rgba(0,0,0,.06);box-sizing:border-box}
+.ns-bill *{box-sizing:border-box}
+.ns-bill__grid{display:grid;grid-template-columns:1fr;gap:28px}
+.ns-bill__side{padding-top:24px;border-top:1px solid rgba(0,0,0,.12)}
+.ns-bill__title{margin:0 0 6px;font-size:1.35rem;line-height:1.3;color:#0f3d2e}
+.ns-bill__sub{margin:0 0 18px;font-size:.95rem;color:#4b5563}
+.ns-bill__heading{margin:0 0 4px;font-size:1.1rem;line-height:1.3;color:#0f3d2e}
+.ns-bill__label{display:block;margin:12px 0 6px;font-size:.9rem;font-weight:600}
+.ns-bill__field{width:100%;padding:12px 14px;font-size:1rem;border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:inherit}
+.ns-bill__field:focus{outline:2px solid #f59e0b;outline-offset:1px;border-color:#f59e0b}
+.ns-bill__error{min-height:1.2em;margin-top:8px;font-size:.85rem;color:#b91c1c}
+.ns-bill__btn{width:100%;margin-top:10px;padding:13px 16px;font-size:1rem;font-weight:700;color:#fff;background:#f59e0b;border:0;border-radius:8px;cursor:pointer}
+.ns-bill__btn:hover{background:#d97706}
+.ns-bill__group{margin:16px 0 8px;font-size:.9rem;font-weight:700;color:#0f3d2e}
+.ns-bill__links{display:flex;flex-wrap:wrap;gap:8px}
+.ns-bill__link{flex:1 1 140px;display:block;padding:10px 12px;text-align:center;font-size:.9rem;font-weight:600;text-decoration:none;color:#0f3d2e;background:#fef3c7;border:1px solid #fcd34d;border-radius:8px}
+.ns-bill__link:hover{background:#fde68a;color:#0f3d2e}
+.ns-bill__note{margin:20px 0 0;font-size:.78rem;color:#6b7280}
+@media (min-width:800px){
+.ns-bill__grid{grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.ns-bill__side{padding-top:0;border-top:0;padding-left:40px;border-left:1px solid rgba(0,0,0,.12)}
+}
+@media (prefers-color-scheme:dark){.ns-bill{background:#111827;color:#e5e7eb;border-color:rgba(255,255,255,.15)}.ns-bill__title,.ns-bill__heading,.ns-bill__group{color:#fbbf24}.ns-bill__sub,.ns-bill__note{color:#9ca3af}.ns-bill__field{background:#1f2937;border-color:#374151}.ns-bill__side{border-color:rgba(255,255,255,.15)}.ns-bill__link{background:#1f2937;color:#fbbf24;border-color:#374151}.ns-bill__link:hover{background:#374151;color:#fbbf24}}
+</style>
+<script>
+function nsBillGo(){
+var d=document.getElementById('ns-discom').value;
+var c=document.getElementById('ns-consumer');
+var err=document.getElementById('ns-bill-error');
+var uid=c.value.replace(/[^0-9]/g,'');
+if(!d){err.textContent='Please select your DISCOM.';return;}
+if(uid.length!==10){err.textContent='Consumer number must be 10 digits.';return;}
+err.textContent='';
+var a=document.createElement('a');
+a.href='https://'+d+'.org.in/Rapdrp/BD?UID='+uid;
+a.target='_blank';
+a.rel='noopener noreferrer';
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+}
+</script>
+</body>
+</html>
